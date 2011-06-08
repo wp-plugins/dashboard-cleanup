@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.1.3
 Stable Tag: 0.2
 
-Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
+Removes options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
 
 == Description ==
 
