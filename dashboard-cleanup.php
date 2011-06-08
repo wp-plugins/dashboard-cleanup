@@ -59,7 +59,7 @@ add_action('admin_menu', 'dashc_menu');
 
 // add menu to admin
 function dashc_menu() {
-	add_submenu_page('index.php', 'Dashboard Cleanup','Dashboard Cleanup','administrator',__FILE__,'dashc_settings_page','','');
+	add_submenu_page('index.php', 'Dashboard Cleanup','Cleanup','administrator',__FILE__,'dashc_settings_page','','');
 	add_action('admin_init','dashc_register_settings'); }
 
 // add settings for db
@@ -73,11 +73,7 @@ function dashc_settings_page() {
     <div id="dashc-page" class="wrap">
     
     <?php
-    	$options = $_POST;
-    	foreach($options as $key) {
-    		echo $dashc_options[$key];
-    	}
-    	update_option('dashc_options', $_POST);
+   	if($_POST['submit']) {update_option('dashc_options', $_POST); }
     ?>
     
     <h2><?php _e('Dashboard Cleanup', 'dashboard-cleanup'); ?></h2>
@@ -165,6 +161,8 @@ function dashc_remove_dashboard_widgets() {
 				break;
 			case 'dashc_secondary' :
 				remove_meta_box('dashboard_secondary', 'dashboard', 'normal');   // other wordpress news
+				break;
+			default :
 				break;
 		} // end switch
 		$i++;		
