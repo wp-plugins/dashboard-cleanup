@@ -1,4 +1,4 @@
-=== wp-cfields ===
+=== Dashboad Cleanup ===
 Contributors: Kevin Dees
 Tags: dashboard, cleanup, remove
 Requires at least: 3.0
