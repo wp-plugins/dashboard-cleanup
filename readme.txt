@@ -1,6 +1,6 @@
 === wp-cfields ===
 Contributors: Kevin Dees
-Tags: wp-cfields
+Tags: Dashboard Cleanup
 Requires at least: 3.0
 Tested up to: 3.1.3
 
