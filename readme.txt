@@ -1,11 +1,14 @@
 === wp-cfields ===
 Contributors: Kevin Dees
-Tags: Dashboard Cleanup
+Tags: dashboard, cleanup, remove
 Requires at least: 3.0
 Tested up to: 3.1.3
 
+Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
+
 == Description ==
 
+Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
 
 == Installation ==
 
