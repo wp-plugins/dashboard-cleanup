@@ -2,7 +2,7 @@
 /*
 Plugin Name: Dashboard Cleanup
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
-Version: 0.2
+Version: 0.2.2
 Author: Kevin Dees
 Author URI: http://kevindees.cc
 */
