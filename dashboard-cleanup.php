@@ -1,8 +1,9 @@
 <?php
 /*
 Plugin Name: Dashboard Cleanup
+Plugin URI: http://wordpress.org/extend/plugins/dashboard-cleanup/
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
-Version: 0.2
+Version: 0.3
 Author: Kevin Dees
 Author URI: http://kevindees.cc
 */
@@ -12,9 +13,9 @@ Author URI: http://kevindees.cc
 |                                                                    |
 | License: GPL                                                       |
 |                                                                    |
-| Dashboard Cleanup - cleaning up the wordpress dashboard.                  |
-| Copyright (C) 2011, Kevin Dees,                              |
-| http://kevindees.ccm                                    |
+| Dashboard Cleanup - cleaning up the wordpress dashboard.           |
+| Copyright (C) 2011, Kevin Dees,                                    |
+| http://kevindees.ccm                                               |
 | All rights reserved.                                               |
 |                                                                    |
 | This program is free software; you can redistribute it and/or      |
