@@ -3,13 +3,15 @@ Contributors: Kevin Dees
 Tags: dashboard, cleanup, remove
 Requires at least: 3.0
 Tested up to: 3.1.3
-Stable Tag: 0.2.2
+Stable Tag: 0.3
 
-Removes options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
+Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, and quick press.
 
 == Description ==
 
-Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press. See readme.txt before activating!
+This plugin will help you remove meta boxes for wordpress.org feed, other news, recent drafts, right now, recent comments, incoming links, plugins box, quick press.
+
+The options page is located under the dashboard menu as "Cleanup". From there you can remove the meta boxes you do not want.
 
 == Installation ==
 
@@ -18,6 +20,10 @@ Upload the dashboard-cleanup plugin to your blog, Activate it!
 1, 2: You're done!
 
 == Changelog ==
+
+= 0.3 =
+
+* Added Plugin URI
 
 = 0.2.2 =
 
