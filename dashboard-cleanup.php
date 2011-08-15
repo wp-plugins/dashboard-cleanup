@@ -3,7 +3,7 @@
 Plugin Name: Dashboard Cleanup
 Plugin URI: http://wordpress.org/extend/plugins/dashboard-cleanup/
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, quick press. See readme.txt before activating!
-Version: 0.3.1
+Version: 0.5
 Author: Kevin Dees
 Author URI: http://kevindees.cc
 */
@@ -73,11 +73,16 @@ function dashc_settings_page() {
     <div class="icon32" id="icon-options-general"><br></div>
     <div id="dashc-page" class="wrap">
     
+    <h2><?php _e('Dashboard Cleanup', 'dashboard-cleanup'); ?></h2>
+    
     <?php
-   	if($_POST['submit']) {update_option('dashc_options', $_POST); }
+   	if($_POST['submit']) {
+   		update_option('dashc_options', $_POST);
+   		if($_POST['dashc_menu_icons'] != '') { $dashc_message .= 'Menu icons removed, <b>changes will be seen on next page load<b>.'; }
+   		echo '<div id="message" class="updated below-h2"><p>Dashboard updated. ', $dashc_message ,' <a href="/wp-admin">Go to Dashboard</a></p></div>';
+   	}
     ?>
     
-    <h2><?php _e('Dashboard Cleanup', 'dashboard-cleanup'); ?></h2>
     <form method="post" action="<?php echo esc_attr($_SERVER["REQUEST_URI"]); ?>">
     <?php settings_fields('dashc_settings_group');
 	
@@ -90,7 +95,9 @@ function dashc_settings_page() {
     				array('Incoming Links', 'dashc_links'), 
     				array('Other News', 'dashc_secondary'), 
     				array('Wordpress News', 'dashc_primary'), 
-    				array('Recent Drafts', 'dashc_drafts')
+    				array('Recent Drafts', 'dashc_drafts'),
+    				array('Admin Menu Icons', 'dashc_menu_icons')
+    				
     			); ?>
     <table class="form-table">
     <?php 
@@ -114,10 +121,6 @@ function dashc_settings_page() {
     </td>
     </tr>	
    <?php $i++; } ?>
-        
-    <tr>
-    <td colspan="2">This meta boxes from the dashboard.</td>
-    </tr>
     </table>
     <p class="submit">
     <input type="submit" name="submit" class="button-primary" value="Save Changes" /></p>
@@ -163,6 +166,9 @@ function dashc_remove_dashboard_widgets() {
 			case 'dashc_secondary' :
 				remove_meta_box('dashboard_secondary', 'dashboard', 'normal');   // other wordpress news
 				break;
+			case 'dashc_menu_icons' :
+				add_action('admin_head', 'dashc_icons_css');   // menu icons
+				break;
 			default :
 				break;
 		} // end switch
@@ -196,6 +202,16 @@ function dashc_css() { ?>
 #advanced_meta {
 	background: #FFC;	
 }
+</style>
+<?php		
+}
+
+// custom fields styles
+function dashc_icons_css() { ?>
+<style type="text/css">
+#adminmenu div.wp-menu-image, .wp-menu-image { display: none; }
+#adminmenuwrap #adminmenu > li > a { padding-left: 12px; font-weight: normal; }
+#collapse-menu { display: none; }
 </style>
 <?php		
 }
