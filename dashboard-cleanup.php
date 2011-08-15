@@ -46,8 +46,8 @@ function dashc_install() {
 
 function dashc_uninstall() {
 	global $wp_version;
-	if(version_compare($wp_version,"3.0", "<")) {
-		wp_die("This plugin requires the jacked-up 3.0 version of WordPress; or higher!"); }
+	if(version_compare($wp_version,"3.2", "<")) {
+		wp_die("This plugin requires the jacked-up 3.2 version of WordPress; or higher!"); }
 	deactivate_plugins(basename(__FILE__));
 }
 
