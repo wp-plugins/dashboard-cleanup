@@ -3,9 +3,9 @@ Contributors: Kevin Dees
 Tags: dashboard, cleanup, remove
 Requires at least: 3.2
 Tested up to: 3.2
-Stable Tag: 0.5
+Stable Tag: 0.7
 
-Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, and quick press. You also remove the admin menu icons.
+This plugin will allow you to: remove dashboard default widgets universally and remove the admin menu icons.
 
 == Description ==
 
@@ -20,6 +20,11 @@ Upload the dashboard-cleanup plugin to your blog, Activate it!
 1, 2: You're done!
 
 == Changelog ==
+
+= 0.7 =
+
+* Made plugin an object
+* Cleanup some of the old code
 
 = 0.5 =
 
