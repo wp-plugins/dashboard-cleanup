@@ -19,6 +19,10 @@ Upload the dashboard-cleanup plugin to your blog, Activate it!
 
 1, 2: You're done!
 
+== Screenshots ==
+
+1. /trunk/screenshot-1.png
+
 == Changelog ==
 
 = 0.7 =
