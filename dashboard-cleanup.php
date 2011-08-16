@@ -35,7 +35,7 @@ Author URI: http://kevindees.cc
 \--------------------------------------------------------------------/
 */
 
-// Make sure we don't expose any info if called directly
+// protect yourself
 if ( !function_exists( 'add_action') ) {
 	echo "Hi there! Nice try. Come again.";
 	exit;
