@@ -1,9 +1,9 @@
 === Dashboard Cleanup ===
 Contributors: Kevin Dees
-Tags: dashboard, cleanup, remove
+Tags: dashboard, cleanup, remove, design, admin
 Requires at least: 3.2
 Tested up to: 3.2
-Stable Tag: 0.7
+Stable Tag: 1.0
 
 This plugin will allow you to: remove dashboard default widgets universally and remove the admin menu icons.
 
@@ -11,7 +11,7 @@ This plugin will allow you to: remove dashboard default widgets universally and 
 
 This plugin will help you remove meta boxes for wordpress.org feed, other news, recent drafts, right now, recent comments, incoming links, plugins box, quick press. You can also remove admin menu icons.
 
-The options page is located under the dashboard menu as "Cleanup". From there you can remove the meta boxes you do not want.
+The options page is located under the Dashboard menu item as "Cleanup". From there you can remove the meta boxes you do not want.
 
 == Installation ==
 
@@ -21,9 +21,16 @@ Upload the dashboard-cleanup plugin to your blog, Activate it!
 
 == Screenshots ==
 
-1. /trunk/screenshot-1.png
+1. screenshot-1.png
 
 == Changelog ==
+
+= 1.0 =
+
+* Added uninstall
+* Cleanup some of the old code
+* Added screenshot of settings page
+* Added security fix
 
 = 0.7 =
 

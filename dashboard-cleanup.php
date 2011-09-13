@@ -3,7 +3,8 @@
 Plugin Name: Dashboard Cleanup
 Plugin URI: http://wordpress.org/extend/plugins/dashboard-cleanup/
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, quick press. See readme.txt before activating!
-Version: 0.7
+Version: 1.0
+Tags: remove, dashboard, admin, design, cleanup
 Author: Kevin Dees
 Author URI: http://kevindees.cc
 
@@ -45,18 +46,12 @@ class dashc {
 	// when object is created
 	function __construct() {
 		add_action('admin_menu', array($this, 'menu')); // add item to menu
-		add_action('admin_init', array($this, 'register_settings')); // register options
 		add_action('admin_init', array($this, 'remove_dashboard_widgets')); // dashboard meta boxes
 	}
 	
 	// make menu
 	function menu() {
 		add_submenu_page('index.php', 'Dashboard Cleanup', 'Cleanup', 'administrator', __FILE__,array($this, 'settings_page'), '', '');
-	}
-	
-	// add settings for db
-	function register_settings() {
-		register_setting('dashc_settings_group', 'dashc_options');
 	}
 	
 	// create page for output and input
@@ -70,15 +65,26 @@ class dashc {
 	    <?php
 	    // $_POST needs to be sanitized by version 1.0
 	   	if($_POST['submit']) {
-	   		update_option('dashc_options', $_POST);
-	   		if($_POST['dashc_menu_icons'] != '') { $dashc_message .= 'Menu icons removed, <b>changes will be seen on next page load<b>.'; }
-	   		echo '<div id="message" class="updated below-h2"><p>Dashboard updated. ', $dashc_message ,' <a href="/wp-admin">Go to Dashboard</a></p></div>';
+	   		
+	   		// cleanup POST data
+	   		$set_options = array();
+	   		foreach($_POST as $key) {
+	   			$safe_key = trim(addslashes($key));
+	   			if( preg_match('/^dashc_.*/' , $safe_key) ) {
+	   				$set_options[$safe_key] = $safe_key;
+	   			}
+	   		}
+	   		
+	   		update_option('dashc_options', $set_options);
+	   		if($_POST['dashc_menu_icons'] != '') { 
+	   			$dashc_message .= 'Menu icons removed, <b>changes will be seen on next page load<b>.'; 
+	   		}
+	   		echo '<div id="message" class="updated below-h2"><p>Dashboard updated. '. $dashc_message .' <a href="/wp-admin">Go to Dashboard</a></p></div>';
 	   	}
 	    ?>
 	    
 	    <form method="post" action="<?php echo esc_attr($_SERVER["REQUEST_URI"]); ?>">
-	    <?php settings_fields('dashc_settings_group');
-		
+	    <?php
 	    // add options
 	    $dashc_boxes = 
 	    			array(
@@ -95,7 +101,13 @@ class dashc {
 	    			); ?>
 	    <table class="form-table">
 	    <?php 
-	    $dashc_options = get_option('dashc_options');
+	    if(get_option('dashc_options')) {
+	    	$dashc_options = get_option('dashc_options');
+	    }
+	    else {
+	    	$dashc_options = array();
+	    }
+	    	
 	    $i = 0;
 	   	while($dashc_boxes[$i]) { ?>
 	    <tr>
