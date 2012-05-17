@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/dashboard-cleanup/
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, quick press. See readme.txt before activating!
 Version: 1.1
 Tags: remove, dashboard, admin, design, cleanup
-Author: Kevin Dees
+Author: kevindees
 Author URI: http://kevindees.cc
 
 /--------------------------------------------------------------------\
