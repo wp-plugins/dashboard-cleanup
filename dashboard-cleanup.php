@@ -3,7 +3,7 @@
 Plugin Name: Dashboard Cleanup
 Plugin URI: http://wordpress.org/extend/plugins/dashboard-cleanup/
 Description: Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, quick press. See readme.txt before activating!
-Version: 1.0
+Version: 1.1
 Tags: remove, dashboard, admin, design, cleanup
 Author: Kevin Dees
 Author URI: http://kevindees.cc
@@ -47,6 +47,7 @@ class dashc {
 	function __construct() {
 		add_action('admin_menu', array($this, 'menu')); // add item to menu
 		add_action('admin_init', array($this, 'remove_dashboard_widgets')); // dashboard meta boxes
+		add_filter('admin_body_class', 'dashc::dashc_body_class');
 	}
 	
 	// make menu
@@ -57,14 +58,13 @@ class dashc {
 	// create page for output and input
 	function settings_page() {
 		?>
-	    <div class="icon32" id="icon-options-general"><br></div>
-	    <div id="dashc-page" class="wrap">
-	    
-	    <h2>Dashboard Cleanup</h2>
+		<div id="dashc-page" class="wrap">
+		<div class="icon32" id="icon-index"><br></div>
+		<h2>Dashboard Cleanup</h2>
 	    
 	    <?php
 	    // $_POST needs to be sanitized by version 1.0
-	   	if($_POST['submit']) {
+	   	if(isset($_POST['submit']) && check_admin_referer('dashc_action','dashc_ref') ) {
 	   		
 	   		// cleanup POST data
 	   		$set_options = array();
@@ -74,7 +74,8 @@ class dashc {
 	   				$set_options[$safe_key] = $safe_key;
 	   			}
 	   		}
-	   		
+
+			  $dashc_message = '';
 	   		update_option('dashc_options', $set_options);
 	   		if($_POST['dashc_menu_icons'] != '') { 
 	   			$dashc_message .= 'Menu icons removed, <b>changes will be seen on next page load<b>.'; 
@@ -85,6 +86,7 @@ class dashc {
 	    
 	    <form method="post" action="<?php echo esc_attr($_SERVER["REQUEST_URI"]); ?>">
 	    <?php
+	    wp_nonce_field('dashc_action','dashc_ref');
 	    // add options
 	    $dashc_boxes = 
 	    			array(
@@ -136,15 +138,28 @@ class dashc {
 	    
 	    <?php }
 	    
-	// remove icons
+		// remove icons
     function icons_css() { ?>
 	    <style type="text/css">
 	    #adminmenu div.wp-menu-image, .wp-menu-image { display: none; }
 	    #adminmenuwrap #adminmenu > li > a { padding-left: 12px; font-weight: normal; }
-	    #collapse-menu { display: none; }
+		  .folded #adminmenu div.wp-menu-image, .folded .wp-menu-image { display: block;}
+	    @media only screen and (max-width: 900px) {
+		    .dashc #adminmenu div.wp-menu-image, .dashc .wp-menu-image { display: block; }
+	    }
 	    </style>
 	    <?php		
     }
+
+		// body class
+		static function dashc_body_class( $classes )
+		{
+			// Current action
+			if ( is_admin() ) {
+				$classes .= 'dashc';
+			}
+			return $classes;
+		}
     
     // remove widgets
     function remove_dashboard_widgets() {
@@ -182,7 +197,6 @@ class dashc {
     				default :
     					break;
     			} // end switch
-    			$i++;
     		} // end while
     	} // end if
     } // end remove_dashboard_widgets
