@@ -1,5 +1,5 @@
 === Dashboard Cleanup ===
-Contributors: Kevin Dees
+Contributors: kevindees
 Tags: dashboard, cleanup, remove, design, admin
 Requires at least: 3.2
 Tested up to: 3.4
@@ -60,4 +60,4 @@ Upload the dashboard-cleanup plugin to your blog, Activate it!
 
 = 0.1 =
 
-* Remove options include wordpress.org feed, recent drafts, right now, recent comments, incloming links, plugins box, quick press
+* Remove options include wordpress.org feed, recent drafts, right now, recent comments, incoming links, plugins box, quick press
